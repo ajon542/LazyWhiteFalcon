@@ -23,6 +23,11 @@ namespace Lazy
             }
         }
 
+        public void RemoveEdge(int nodeId1, int nodeId2)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ContainsNode(int nodeId)
         {
             if (tree[nodeId] == null)
