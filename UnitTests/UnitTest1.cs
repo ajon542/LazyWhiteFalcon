@@ -12,7 +12,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            Tree tree = new Tree();
+            TreeOperations tree = new TreeOperations();
 
             tree.AddEdge(0, 1);
 
@@ -25,7 +25,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod2()
         {
-            Tree tree = new Tree();
+            TreeOperations tree = new TreeOperations();
 
             tree.AddEdge(0, 1);
             tree.AddEdge(1, 2);
@@ -39,7 +39,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod3()
         {
-            Tree tree = new Tree();
+            TreeOperations tree = new TreeOperations();
 
             tree.AddEdge(0, 1);
             tree.AddEdge(1, 2);
@@ -53,7 +53,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod4()
         {
-            Tree tree = new Tree();
+            TreeOperations tree = new TreeOperations();
 
             tree.AddEdge(0, 1);
             tree.AddEdge(0, 2);
@@ -72,7 +72,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod5()
         {
-            Tree tree = new Tree();
+            TreeOperations tree = new TreeOperations();
 
             tree.AddEdge(0, 1);
             tree.AddEdge(0, 2);

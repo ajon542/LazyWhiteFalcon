@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lazy
 {
-    public class Tree
+    public class TreeOperations
     {
         private ITree tree = new DictionaryTree();
 
@@ -70,7 +70,7 @@ namespace Lazy
                 }
 
                 // Obtain the neighbours.
-                neighbours = GetNeighbours(curr);// PERFORMANCE: Changing from dictionary to list reduced from 18.1% to 8.0%
+                neighbours = tree.GetNeighbours(curr);// PERFORMANCE: Changing from dictionary to list reduced from 18.1% to 8.0%
 
                 // Only add unvisited neighbours to the queue.
                 // foreach (int neighbour in neighbours) // PERFORMANCE: Reduced from 24.9% to 18.8%
@@ -94,11 +94,6 @@ namespace Lazy
                 path.Add(visited[i].Value);
             }
             return path;
-        }
-
-        private List<int> GetNeighbours(int nodeId)
-        {
-            return tree.GetNeighbours(nodeId);
         }
 
         public override string ToString()

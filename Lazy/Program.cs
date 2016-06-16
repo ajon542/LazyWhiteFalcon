@@ -39,7 +39,7 @@ namespace Lazy
                 int nodeCount = Convert.ToInt32(strArr[0]);
                 int queryCount = Convert.ToInt32(strArr[1]);
 
-                Tree tree = new Tree();
+                TreeOperations tree = new TreeOperations();
 
                 // Read the edges from input.
                 for (int i = 0; i < nodeCount - 1; ++i)
