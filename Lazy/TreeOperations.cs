@@ -41,6 +41,46 @@ namespace Lazy
             }
         }
 
+        public Dictionary<int, Node> BuildRootedTree(int rootNodeId)
+        {
+            if (tree.ContainsNode(rootNodeId) == false)
+            {
+                return null;
+            }
+
+            Dictionary<int, Node> rootedTree = new Dictionary<int, Node>();
+
+            List<int> neighbours;
+            Queue<int> toVisit = new Queue<int>();
+
+            // Add the root node which has no previous node.
+            toVisit.Enqueue(rootNodeId);
+            rootedTree.Add(rootNodeId, new Node { Prev = -1 });
+
+            while (toVisit.Count > 0)
+            {
+                // Obtain the next node to visit.
+                int curr = toVisit.Dequeue();
+
+                // Obtain the neighbours.
+                neighbours = tree.GetNeighbours(curr);
+
+                for (int i = 0; i < neighbours.Count; ++i)
+                {
+                    if (!rootedTree.ContainsKey(neighbours[i]))
+                    {
+                        // Only add unvisited neighbours to the queue.
+                        toVisit.Enqueue(neighbours[i]);
+
+                        // Add the new node which is a child of the current node.
+                        rootedTree.Add(neighbours[i], new Node { Prev = curr });
+                    }
+                }
+            }
+
+            return rootedTree;
+        }
+
         public List<int> BFS(int a, int b)
         {
             if (tree.ContainsNode(a) == false || tree.ContainsNode(b) == false)
@@ -89,7 +129,7 @@ namespace Lazy
 
             // Backtrack through visited list to obtain the path.
             List<int> path = new List<int>();
-            for(int i = fromIndex; i >= 0; i = visited[i].Prev)
+            for (int i = fromIndex; i >= 0; i = visited[i].Prev)
             {
                 path.Add(visited[i].Value);
             }

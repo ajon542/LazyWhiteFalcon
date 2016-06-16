@@ -98,5 +98,58 @@ namespace UnitTests
 
             CollectionAssert.AreEqual(expectedPath, actualPath);
         }
+
+        [TestMethod]
+        public void TestMethod6()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+
+            // Build rooted tree from node 0.
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+            Assert.AreEqual(rootedTree[0].Prev, -1);
+            Assert.AreEqual(rootedTree[1].Prev, 0);
+
+            // Build rooted tree from node 1.
+            rootedTree = tree.BuildRootedTree(1);
+            Assert.AreEqual(rootedTree[1].Prev, -1);
+            Assert.AreEqual(rootedTree[0].Prev, 1);
+        }
+
+        [TestMethod]
+        public void TestMethod7()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+            tree.AddEdge(1, 2);
+            tree.AddEdge(2, 3);
+            tree.AddEdge(3, 4);
+
+            // Build rooted tree from node 0.
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+            Assert.AreEqual(rootedTree[0].Prev, -1);
+            Assert.AreEqual(rootedTree[1].Prev, 0);
+            Assert.AreEqual(rootedTree[2].Prev, 1);
+            Assert.AreEqual(rootedTree[3].Prev, 2);
+            Assert.AreEqual(rootedTree[4].Prev, 3);
+
+            // Build rooted tree from node 4.
+            rootedTree = tree.BuildRootedTree(4);
+            Assert.AreEqual(rootedTree[4].Prev, -1);
+            Assert.AreEqual(rootedTree[3].Prev, 4);
+            Assert.AreEqual(rootedTree[2].Prev, 3);
+            Assert.AreEqual(rootedTree[1].Prev, 2);
+            Assert.AreEqual(rootedTree[0].Prev, 1);
+
+            // Build rooted tree from node 2.
+            rootedTree = tree.BuildRootedTree(2);
+            Assert.AreEqual(rootedTree[2].Prev, -1);
+            Assert.AreEqual(rootedTree[1].Prev, 2);
+            Assert.AreEqual(rootedTree[3].Prev, 2);
+            Assert.AreEqual(rootedTree[4].Prev, 3);
+            Assert.AreEqual(rootedTree[0].Prev, 1);
+        }
     }
 }
