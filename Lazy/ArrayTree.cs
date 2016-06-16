@@ -10,16 +10,16 @@ namespace Lazy
     {
         private List<int>[] tree = new List<int>[20000];
 
-        public void AddEdge(int key, int value)
+        public void AddEdge(int nodeId1, int nodeId2)
         {
-            if (tree[key] != null)
+            if (tree[nodeId1] != null)
             {
-                tree[key].Add(value);
+                tree[nodeId1].Add(nodeId2);
             }
             else
             {
-                tree[key] = new List<int>();
-                tree[key].Add(value);
+                tree[nodeId1] = new List<int>();
+                tree[nodeId1].Add(nodeId2);
             }
         }
 

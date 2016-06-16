@@ -11,16 +11,16 @@ namespace Lazy
         // Tree structure.
         private Dictionary<int, List<int>> tree = new Dictionary<int, List<int>>();
 
-        public void AddEdge(int key, int value)
+        public void AddEdge(int nodeId1, int nodeId2)
         {
-            if (tree.ContainsKey(key))
+            if (tree.ContainsKey(nodeId1))
             {
-                tree[key].Add(value);
+                tree[nodeId1].Add(nodeId2);
             }
             else
             {
-                tree.Add(key, new List<int>());
-                tree[key].Add(value);
+                tree.Add(nodeId1, new List<int>());
+                tree[nodeId1].Add(nodeId2);
             }
         }
 
