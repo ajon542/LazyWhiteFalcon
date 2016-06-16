@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lazy
 {
-    public class ArrayTree : ITree
+    public class ArrayTree : IGraph
     {
         private List<int>[] tree = new List<int>[20000];
 

@@ -6,7 +6,7 @@ namespace Lazy
 {
     public class TreeOperations
     {
-        private ITree tree = new DictionaryTree();
+        private IGraph tree = new DictionaryTree();
 
         // Node reference.
         private Dictionary<int, Node> nodeRef = new Dictionary<int, Node>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lazy
 {
-    public class DictionaryTree : ITree
+    public class DictionaryTree : IGraph
     {
         // Tree structure.
         private Dictionary<int, List<int>> tree = new Dictionary<int, List<int>>();

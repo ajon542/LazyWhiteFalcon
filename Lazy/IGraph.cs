@@ -3,12 +3,12 @@
 namespace Lazy
 {
     /// <summary>
-    /// Interface for a tree.
+    /// Interface for a graph.
     /// </summary>
     /// <remarks>
     /// Nodes are referred to by identifiers. The contents of each node are of no interest.
     /// </remarks>
-    public interface ITree
+    public interface IGraph
     {
         /// <summary>
         /// Adds an edge between two nodes. The edge is directed from nodeId1 -> nodeId2.
@@ -25,10 +25,10 @@ namespace Lazy
         void RemoveEdge(int nodeId1, int nodeId2);
 
         /// <summary>
-        /// Checks if the given node is in the tree.
+        /// Checks if the given node is in the graph.
         /// </summary>
         /// <param name="nodeId">The node to check.</param>
-        /// <returns>True if the node is in the tree, false otherwise.</returns>
+        /// <returns>True if the node is in the graph, false otherwise.</returns>
         bool ContainsNode(int nodeId);
 
         /// <summary>

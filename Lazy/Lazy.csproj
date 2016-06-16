@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="ArrayTree.cs" />
     <Compile Include="DictionaryTree.cs" />
-    <Compile Include="ITree.cs" />
+    <Compile Include="IGraph.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
