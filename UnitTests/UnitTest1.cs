@@ -226,5 +226,68 @@ namespace UnitTests
             Assert.AreEqual(1, tree.FindCommonAncestor(2, 1));
             Assert.AreEqual(1, tree.FindCommonAncestor(4, 3));
         }
+
+        [TestMethod]
+        public void TestMethod12()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+
+            tree.SetNodeValue(0, 10);
+            tree.SetNodeValue(1, 15);
+
+            Assert.AreEqual(10, tree.GetPathSum(0, 0));
+            Assert.AreEqual(15, tree.GetPathSum(1, 1));
+            Assert.AreEqual(25, tree.GetPathSum(0, 1));
+            Assert.AreEqual(25, tree.GetPathSum(1, 0));
+        }
+
+        [TestMethod]
+        public void TestMethod13()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+            tree.AddEdge(1, 2);
+            tree.AddEdge(2, 3);
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+
+            tree.SetNodeValue(0, 1);
+            tree.SetNodeValue(1, 2);
+            tree.SetNodeValue(2, 3);
+            tree.SetNodeValue(3, 4);
+
+            Assert.AreEqual(1, tree.GetPathSum(0, 0));
+            Assert.AreEqual(3, tree.GetPathSum(0, 1));
+            Assert.AreEqual(6, tree.GetPathSum(0, 2));
+            Assert.AreEqual(10, tree.GetPathSum(0, 3));
+        }
+
+        [TestMethod]
+        public void TestMethod14()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+            tree.AddEdge(1, 2);
+            tree.AddEdge(1, 3);
+            tree.AddEdge(2, 4);
+            tree.AddEdge(3, 5);
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+
+            tree.SetNodeValue(0, 1);
+            tree.SetNodeValue(1, 2);
+            tree.SetNodeValue(2, 3);
+            tree.SetNodeValue(3, 4);
+            tree.SetNodeValue(4, 5);
+            tree.SetNodeValue(5, 6);
+
+            Assert.AreEqual(11, tree.GetPathSum(0, 4));
+            Assert.AreEqual(20, tree.GetPathSum(5, 4));
+            Assert.AreEqual(9, tree.GetPathSum(2, 3));
+            Assert.AreEqual(15, tree.GetPathSum(2, 5));
+        }
     }
 }

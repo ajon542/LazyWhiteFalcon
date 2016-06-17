@@ -96,6 +96,34 @@ namespace Lazy
             return a;
         }
 
+        public int GetPathSum(int a, int b)
+        {
+            if (a == b)
+            {
+                return nodeRef[a].Value;
+            }
+
+            // Find common ancestor.
+            int commonAncestor = FindCommonAncestor(a, b);
+
+            // Sum all the values in the path from a to the common ancestor.
+            int sum = 0;
+            while(a != commonAncestor)
+            {
+                sum += nodeRef[a].Value;
+                a = nodeRef[a].Prev;
+            }
+
+            while (b != commonAncestor)
+            {
+                sum += nodeRef[b].Value;
+                b = nodeRef[b].Prev;
+            }
+
+            sum += nodeRef[commonAncestor].Value;
+            return sum;
+        }
+
         public Dictionary<int, Node> BuildRootedTree(int rootNodeId)
         {
             if (tree.ContainsNode(rootNodeId) == false)

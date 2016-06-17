@@ -52,6 +52,8 @@ namespace Lazy
                     tree.AddEdge(nodeA, nodeB);
                 }
 
+                tree.BuildRootedTree(1);
+
                 // Read the queries from input.
                 for (int i = 0; i < queryCount; ++i)
                 {
@@ -77,12 +79,7 @@ namespace Lazy
                     // Calculate the sum.
                     if (queryType == 2)
                     {
-                        int sum = 0;
-                        List<int> path = tree.BFS(u, v);
-                        foreach (int nodeId in path)
-                        {
-                            sum += tree.GetNodeValue(nodeId);
-                        }
+                        int sum = tree.GetPathSum(u, v);
                         actualResult.Add(sum.ToString());
                     }
                 }
