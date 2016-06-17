@@ -59,6 +59,43 @@ namespace Lazy
             return height;
         }
 
+        public int FindCommonAncestor(int a, int b)
+        {
+            // If the nodes are the same, then the common ancestor is that node.
+            if (a == b)
+            {
+                return a;
+            }
+
+            // Get the height of both nodes.
+            int heightA = GetHeight(a);
+            int heightB = GetHeight(b);
+
+            // Iterate through parents until the common ancestor is found.
+            while (a != b)
+            {
+                if (heightA > heightB)
+                {
+                    a = nodeRef[a].Prev;
+                    heightA--;
+                }
+                else if (heightB > heightA)
+                {
+                    b = nodeRef[b].Prev;
+                    heightB--;
+                }
+                else
+                {
+                    a = nodeRef[a].Prev;
+                    b = nodeRef[b].Prev;
+                    heightA--;
+                    heightB--;
+                }
+            }
+
+            return a;
+        }
+
         public Dictionary<int, Node> BuildRootedTree(int rootNodeId)
         {
             if (tree.ContainsNode(rootNodeId) == false)
