@@ -12,8 +12,8 @@ namespace Lazy
     {
         static void Main(string[] args)
         {
-            string input = "..\\..\\..\\..\\LazyWhiteFalcon\\TestCases\\input04.txt";
-            string output = "..\\..\\..\\..\\LazyWhiteFalcon\\TestCases\\output04.txt";
+            string input = "..\\..\\..\\..\\LazyWhiteFalcon\\TestCases\\input07.txt";
+            string output = "..\\..\\..\\..\\LazyWhiteFalcon\\TestCases\\output07.txt";
 
             // Read the expected output file.
             List<string> expectedResult = new List<string>();
