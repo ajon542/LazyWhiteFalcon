@@ -41,21 +41,39 @@ namespace Lazy
             }
         }
 
+        /// <summary>
+        /// Get the height of a node.
+        /// </summary>
+        /// <param name="nodeId">The node.</param>
+        /// <returns>The height of the node. The root node height is 0.</returns>
+        public int GetHeight(int nodeId)
+        {
+            int height = 0;
+            int parent = nodeRef[nodeId].Prev;
+            while(parent != -1)
+            {
+                parent = nodeRef[parent].Prev;
+                height++;
+            }
+
+            return height;
+        }
+
         public Dictionary<int, Node> BuildRootedTree(int rootNodeId)
         {
             if (tree.ContainsNode(rootNodeId) == false)
             {
-                return null;
+                throw new Exception("tree does not contain node " + rootNodeId);
             }
 
-            Dictionary<int, Node> rootedTree = new Dictionary<int, Node>();
+            nodeRef = new Dictionary<int, Node>();
 
             List<int> neighbours;
             Queue<int> toVisit = new Queue<int>();
 
             // Add the root node which has no previous node.
             toVisit.Enqueue(rootNodeId);
-            rootedTree.Add(rootNodeId, new Node { Prev = -1 });
+            nodeRef.Add(rootNodeId, new Node { Prev = -1 });
 
             while (toVisit.Count > 0)
             {
@@ -67,18 +85,18 @@ namespace Lazy
 
                 for (int i = 0; i < neighbours.Count; ++i)
                 {
-                    if (!rootedTree.ContainsKey(neighbours[i]))
+                    if (!nodeRef.ContainsKey(neighbours[i]))
                     {
                         // Only add unvisited neighbours to the queue.
                         toVisit.Enqueue(neighbours[i]);
 
                         // Add the new node which is a child of the current node.
-                        rootedTree.Add(neighbours[i], new Node { Prev = curr });
+                        nodeRef.Add(neighbours[i], new Node { Prev = curr });
                     }
                 }
             }
 
-            return rootedTree;
+            return nodeRef;
         }
 
         public List<int> BFS(int a, int b)

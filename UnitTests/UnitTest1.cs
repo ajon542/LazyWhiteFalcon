@@ -151,5 +151,45 @@ namespace UnitTests
             Assert.AreEqual(rootedTree[4].Prev, 3);
             Assert.AreEqual(rootedTree[0].Prev, 1);
         }
+
+        [TestMethod]
+        public void TestMethod8()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+
+            // Build rooted tree from node 0.
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+
+            // Height of root node should be 0.
+            Assert.AreEqual(0, tree.GetHeight(0));
+
+            // Height of child node should be 1.
+            Assert.AreEqual(1, tree.GetHeight(1));
+        }
+
+        [TestMethod]
+        public void TestMethod9()
+        {
+            TreeOperations tree = new TreeOperations();
+
+            tree.AddEdge(0, 1);
+            tree.AddEdge(1, 2);
+            tree.AddEdge(1, 3);
+            tree.AddEdge(2, 4);
+            tree.AddEdge(3, 5);
+
+            // Build rooted tree from node 0.
+            Dictionary<int, Node> rootedTree = tree.BuildRootedTree(0);
+
+            // Check the heights match.
+            Assert.AreEqual(0, tree.GetHeight(0));
+            Assert.AreEqual(1, tree.GetHeight(1));
+            Assert.AreEqual(2, tree.GetHeight(2));
+            Assert.AreEqual(2, tree.GetHeight(3));
+            Assert.AreEqual(3, tree.GetHeight(4));
+            Assert.AreEqual(3, tree.GetHeight(5));
+        }
     }
 }
